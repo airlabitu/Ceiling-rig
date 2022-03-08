@@ -16,7 +16,7 @@ The ceiling rig consists of two seperate sections of trusses, mounted in the cei
 rig is controlled via DMX from a work station in the lab - if not otherwise specified below. Furthermore we have a tracking
 headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounted with IR diodes.
 
-**Rig (Towards the atrium)**
+**|| Rig (Towards the atrium) ||**
 
 3 flood lamps [warm/cool]
 
@@ -29,7 +29,7 @@ headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounte
 7 Dimmer blocks available
 
 
-**Rig (Towards the street)**
+**|| Rig (Towards the street) ||**
 
 4 flood lamps [warm/cool]
 

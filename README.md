@@ -10,6 +10,7 @@ Contents:
 5. Construction documentation [below]
 
 
+
 **<||||||||||||||||| Ceiling Rig Hardware |||||||||||||||||>**
 
 The ceiling rig consists of two seperate sections of trusses, mounted in the ceiling (~6m above the ground). The
@@ -38,9 +39,10 @@ headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounte
 7 Dimmer blocks available
 
 
+
 **<|||||||||||||| Construction Documentation ||||||||||||||>**
 
 The rig is conctrolled via an Arduino Uno running simple DMX with a DMX shield. DMX cables are run from this to the ceiling rig. The arduino is coupled
 with the work station via a USB serial connection - the yellow USB cable marked 'ceiling rig DMX controller'. 
 
-The name of the arduino board is hardcoded into the interface under 'CONNECTION TO SERIAL DEVICES', and must be updated if the Arduino is changed (look in the serial monitor for the serial connections).
+The name of the arduino board is hardcoded into the interface under 'CONNECTION TO SERIAL DEVICES', and must be updated if the Arduino is changed (look in the serial monitor for the available serial connections).

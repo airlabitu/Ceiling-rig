@@ -11,6 +11,7 @@ Contents:
 
 
 **<||||||||||||||||| Ceiling Rig Hardware |||||||||||||||||>**
+
 The ceiling rig consists of two seperate sections of trusses, mounted in the ceiling (~6m above the ground). The
 rig is controlled via DMX from a work station in the lab - if not otherwise specified below. Furthermore we have a tracking
 headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounted with IR diodes.
@@ -30,6 +31,7 @@ headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounte
 
 
 **<|||||||||||||| Construction Documentation ||||||||||||||>**
+
 The rig is conctrolled via an Arduino Uno running simple DMX with a DMX shield. DMX cables are run from this to the ceiling rig. The arduino is coupled
 with the work station via a USB serial connection - the yellow USB cable marked 'ceiling rig DMX controller'. 
 

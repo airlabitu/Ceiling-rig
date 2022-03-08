@@ -17,16 +17,24 @@ rig is controlled via DMX from a work station in the lab - if not otherwise spec
 headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounted with IR diodes.
 
 **Rig (Towards the atrium)**
+
 3 flood lamps [warm/cool]
+
 4 RGB lights
+
 1 floor projector [Remote controlled, HDMI input]
+
 1 Kinect Camera - facing the floor [Serial (USB) connection, DMX power control]
+
 7 Dimmer blocks available
 
 
 **Rig (Towards the street)**
+
 4 flood lamps [warm/cool]
+
 4 RGB lights
+
 7 Dimmer blocks available
 
 

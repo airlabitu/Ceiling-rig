@@ -1,1 +1,3 @@
-This is the code for AIR LAB's ceiling rig
+This is the code for AIR LAB's ceiling rig interface.
+
+**Note: If new cloned our arduino is changed, the serial name in the sketch must be updated**

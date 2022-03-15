@@ -26,7 +26,7 @@ headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounte
 
 1 floor projector [Remote controlled, HDMI input]
 
-1 Kinect Camera - facing the floor [Serial (USB) connection, DMX power control]
+1 Kinect Camera - facing the floor [USB connection, DMX power control]
 
 7 Dimmer blocks available
 

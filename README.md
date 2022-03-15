@@ -3,10 +3,11 @@
 This is the documentation for the AIR LAB ceiling rig.
 
 Contents:
-1. Ceiling rig hardware [below]
-2. Ceiling rig interface [Processing]
-3. Blob tracker [Processing]
-4. Orientation and position tracking [Processing]
+
+1. Ceiling rig interface [Processing]
+2. Blob tracker [Processing]
+3. Orientation and position tracking [Processing]
+4. Ceiling rig hardware [below]
 5. Construction documentation [below]
 
 

@@ -1,0 +1,4 @@
+**SYSSTEM SPECIFICATIONS**
+
+The arduino is running the DMX simple library's SerialToDmx example. Make sure to match the baudrate of the arduino sketch (Serial.begin()) with the one in the Processing sketch.
+Furthermore, if you are setting up a new arduino, make sure to change the board name on line 62 under CONNECTION TO SERIAL DEVICES in the processing sketch.

@@ -15,8 +15,7 @@ This is the documentation for the AIR LAB ceiling rig.
 ## Ceiling Rig Hardware
 
 The ceiling rig consists of two seperate sections of trusses, mounted in the ceiling (~6m above the ground). The
-rig is controlled via DMX from a work station in the lab - if not otherwise specified below. Furthermore we have a tracking
-headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounted with IR diodes.
+rig is controlled via DMX from a work station in the lab - if not otherwise specified below.
 
 ### Rig (Towards the atrium)
 

@@ -8,7 +8,7 @@ This is the documentation for the AIR LAB ceiling rig.
 2. Ceiling rig hardware [below]
 3. Construction documentation [below]
 
-### Related Resources from AIR LAB:
+#### Related Resources from AIR LAB:
 1. <a href="https://github.com/airlabitu/Tutorials/tree/master/Orientation_and_position_tracker" target="_blank"> Orientation and position tracking tutorial [Processing]</a>
 2.  <a href="https://github.com/airlabitu/Processing-kinect-blob-tracker.git" target="_blank">Blob tracker sketch [Processing]</a>
 

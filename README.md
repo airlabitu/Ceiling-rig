@@ -12,13 +12,13 @@ Contents:
 
 
 
-**<||||||||||||||||| Ceiling Rig Hardware |||||||||||||||||>**
+## Ceiling Rig Hardware
 
 The ceiling rig consists of two seperate sections of trusses, mounted in the ceiling (~6m above the ground). The
 rig is controlled via DMX from a work station in the lab - if not otherwise specified below. Furthermore we have a tracking
 headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounted with IR diodes.
 
-**|| Rig (Towards the atrium) ||**
+## Rig (Towards the atrium)
 
 3 flood lamps [warm/cool]
 
@@ -31,7 +31,7 @@ headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounte
 7 Dimmer blocks available
 
 
-**|| Rig (Towards the street) ||**
+## Rig (Towards the street)
 
 4 flood lamps [warm/cool]
 
@@ -40,8 +40,7 @@ headset for the rig, consisting of a 'Sennheiser RS 175' wireless headset mounte
 7 Dimmer blocks available
 
 
-
-**<|||||||||||||| Construction Documentation ||||||||||||||>**
+## Construction Documentation
 
 The rig is conctrolled via an Arduino Uno with a DMX shield running the SerialToUsb example from the DMXsimple library. DMX cables are run from this to the ceiling rig. The arduino is coupled with the work station via a USB connection - use the yellow USB cable marked 'ceiling rig DMX controller'. 
 

@@ -2,15 +2,15 @@
 
 This is the documentation for the AIR LAB ceiling rig.
 
-Contents:
+### Contents:
 
 1. Ceiling rig interface [Processing]
-2. Blob tracker [Processing]
-3. Orientation and position tracking [Processing]
-4. Ceiling rig hardware [below]
-5. Construction documentation [below]
+2. Ceiling rig hardware [below]
+3. Construction documentation [below]
 
-
+### Related Resources from AIR LAB:
+1. <a href="https://github.com/airlabitu/Tutorials/tree/master/Orientation_and_position_tracker" target="_blank"> Orientation and position tracking tutorial [Processing]</a>
+2.  <a href="https://github.com/airlabitu/Processing-kinect-blob-tracker.git" target="_blank">Blob tracker sketch [Processing]</a>
 
 ## Ceiling Rig Hardware
 

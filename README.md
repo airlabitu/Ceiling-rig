@@ -5,8 +5,9 @@ This is the documentation for the AIR LAB ceiling rig.
 ### Contents:
 
 1. Ceiling rig interface [Processing]
-2. Ceiling rig hardware [below]
-3. Construction documentation [below]
+2. Ceiling rig DMX address map [PDF]
+3. Ceiling rig hardware [below]
+4. Construction documentation [below]
 
 #### Related Resources from AIR LAB:
 1. <a href="https://github.com/airlabitu/Tutorials/tree/master/Orientation_and_position_tracker" target="_blank"> Orientation and position tracking tutorial [Processing]</a>

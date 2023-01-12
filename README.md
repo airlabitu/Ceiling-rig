@@ -20,9 +20,9 @@ rig is controlled via DMX from a work station in the lab - if not otherwise spec
 
 ### Rig (Towards the atrium)
 
-3 flood lamps [warm/cool]
+4 flood lamps [warm/cool]
 
-4 RGB lights
+6 RGB lights
 
 1 floor projector [Remote controlled, HDMI input]
 
@@ -35,7 +35,7 @@ rig is controlled via DMX from a work station in the lab - if not otherwise spec
 
 4 flood lamps [warm/cool]
 
-4 RGB lights
+11 RGB lights
 
 7 Dimmer blocks available
 

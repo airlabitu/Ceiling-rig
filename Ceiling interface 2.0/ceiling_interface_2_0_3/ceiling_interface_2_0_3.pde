@@ -42,6 +42,8 @@ void setup(){
   flood_lights[3].address = 7;
   flood_lights[3].id = "FL_4";
   
+  
+  
   floods_combined = new Flood(-100, -100, width-300, 70);
   floods_combined.disable_close_gui = true;
   floods_combined.gui_enabled = false;
@@ -103,6 +105,74 @@ void draw(){
 
 void mouseReleased(){
   
+  // if LEFT mouse button is releases
+    // CHECK open/close buttons
+    // loop through all
+      // if mouse over this lamp's toggle button
+      
+  
+  
+  // if LEFT mouse button and combined gui open
+    // run combined sliders
+    // if changes made
+      // set new value(s) on all combined lamnps
+  
+  // else loop through all lamps
+    
+    // # CHECK OPEN/CLOSE combined
+    // if RIGHT mouse button
+      // create combined lamps counter (init -1)
+      // is mouse over current's on/off toggle button
+        // toggle the combined counter
+        // if current state is combined increment the combined counter
+    
+    // # CHECK OPEN/CLOSE of individual gui and interaction on individual lamp gui's
+    // else if LEFT mouse button 
+      // is current's gui open
+        // process as gui/slider interaction
+      // else if mouse over current's toggle button
+        // save future gui open state of this lamp
+        // close all gui's (use foor loop)
+        // set gui state for current to saved state
+    
+
+
+    
+    
+    
+      
+  // LEFT mouse button
+    // CHECK OPEN GUI INTERACTION
+    // loop through all
+      // if gui is open
+        // check and process slider interactions
+        
+    // CHECK OPEN/CLOSE individual
+    // loop through all
+      // is mouse over current's toggle
+        // save future gui open state of this lamp
+        // set all lamps to gui closed
+        // set new state of 'this' lamp gui
+    
+    // CHECK OPEN GUI   
+       
+      // if currently closed
+        // open it
+        // if (current_open_gui != null)
+        // set to current_open_gui
+      // else if currently open, close it
+    // else is mouse over open lamp gui
+  
+  // RIGHT mouse button
+    // CHECK OPEN/CLOSE combined
+    // create combined counter (init -1)
+    // loop through all
+      // is mouse over current's toggle
+        // toggle the combined counter
+      // if current state is combined increment the combined counter
+    // if counter is -1 disable combined gui
+    // else open combined counter
+  
   int count_combine = 0; // for counting number of combined flood lights
   
   // FLOOD LIGHTS
@@ -111,8 +181,8 @@ void mouseReleased(){
     if (result != 5) println("result", result, "ID", flood_lights[i].id);
     
     if (result == 0 && flood_lights[i].combine_check){ // combine variable was toggled and new status is 'true'  
-      flood_lights[i].setWarm(floods_combined.getWarm());
-      flood_lights[i].setCold(floods_combined.getCold());
+      flood_lights[i].setWarm(floods_combined.getWarm()); // set this flood lamp to same values as floods_combined
+      flood_lights[i].setCold(floods_combined.getCold()); // set this flood lamp to same values as floods_combined
     }
     
     if (result == 1){ // a lamp gui was opened
@@ -139,9 +209,9 @@ void mouseReleased(){
     if (result != 5) println("result", result, "ID", rgb_spots[i].id);
     
     if (result == 0 && rgb_spots[i].combine_check){ // combine variable was toggled and new status is 'true'  
-      rgb_spots[i].setRed(rgb_spots_combined.getRed());
-      rgb_spots[i].setGreen(rgb_spots_combined.getGreen());
-      rgb_spots[i].setBlue(rgb_spots_combined.getBlue());
+      rgb_spots[i].setRed(rgb_spots_combined.getRed()); // set this RGB lamp to same values as rgb_spots_combined
+      rgb_spots[i].setGreen(rgb_spots_combined.getGreen()); // set this RGB lamp to same values as rgb_spots_combined
+      rgb_spots[i].setBlue(rgb_spots_combined.getBlue()); // set this RGB lamp to same values as rgb_spots_combined
     }
     
     if (result == 1){ // a gui was opened

@@ -1,0 +1,44 @@
+class SliderSection{
+  
+  int x, y;
+  ArrayList <Slider> sliders;
+  
+  SliderSection(int x_, int y_){
+    x = x_;
+    y = y_;
+    sliders = new ArrayList<Slider>();
+  }
+  
+  Channel update(){
+    for (Slider sl : sliders){
+      if (sl.update()) return sl.channel;
+    }
+    return null;
+  }
+  
+  void addSlider(String label_){
+    Slider s = new Slider(x, y+40+sliders.size()*50, label_);
+    //sliders.add(new Slider(x, y+40+sliders.size()*50, label_));
+    //println("add slider", s.channel.label);
+    //s.channel.name = label_
+    sliders.add(s);
+  }
+  
+  void show(){
+    for (Slider sl : sliders){
+      sl.show();
+    }
+  }
+  
+  void connectButton(EquipmentButton eb){
+    for (Slider s : sliders){
+      s.channel = eb.getChannel(s.label);  
+    }
+  }
+  
+  void disconnectButton(){
+    for (Slider s : sliders){
+      s.channel = null;  
+    }
+  }
+}

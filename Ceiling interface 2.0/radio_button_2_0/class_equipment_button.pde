@@ -5,15 +5,15 @@ class EquipmentButton{
   color main_col, second_col;
   boolean enabled_state;
   boolean combine_state;
-  int ID;
+  String ID;
   ArrayList <Channel> channels = new ArrayList<Channel>();
   
-  EquipmentButton(int x_, int y_, int ID_){
+  EquipmentButton(int x_, int y_, String ID_){
     x = x_;
     y = y_;
     size = 40;
-    main_col = color(255,0,0);
-    second_col = color(0,255,0);
+    main_col = color(255,105,204);
+    second_col = color(255, 255, 0);
     ID = ID_;
   }
   
@@ -34,7 +34,7 @@ class EquipmentButton{
   void show(){
     
     if (enabled_state) fill(main_col);
-    else noFill();
+    else fill(0);//noFill();
     
     if (combine_state) stroke(second_col);
     else stroke(main_col);
@@ -46,7 +46,13 @@ class EquipmentButton{
     else if (type == 0){  
       ellipse(x, y, size, size);
     }
-    fill(255);
+    
+    
+    if (enabled_state) fill(0);
+    else fill(main_col);
+    textSize(10);
+    textAlign(CENTER, CENTER);
+    textFont(font_small);
     text(ID, x, y);
   
   }
@@ -59,7 +65,8 @@ class EquipmentButton{
   
   void setType(String type_){
     if (type_.equals("flood")) type = 1;
-    else if (type_.equals("rgb_spot")) type = 0;    
+    else if (type_.equals("rgb_spot")) type = 0;
+    else if (type_.equals("dimm")) type = 1;
   }
   
   void addChannel(String ch_name, int address_){

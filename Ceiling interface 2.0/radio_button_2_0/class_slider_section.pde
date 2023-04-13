@@ -17,7 +17,7 @@ class SliderSection{
   }
   
   void addSlider(String label_){
-    Slider s = new Slider(x, y+40+sliders.size()*50, label_);
+    Slider s = new Slider(x, y+10+sliders.size()*50, label_);
     //sliders.add(new Slider(x, y+40+sliders.size()*50, label_));
     //println("add slider", s.channel.label);
     //s.channel.name = label_

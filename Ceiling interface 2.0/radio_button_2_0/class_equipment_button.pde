@@ -32,7 +32,7 @@ class EquipmentButton{
   }
   
   void show(){
-    
+    strokeWeight(1);
     if (enabled_state) fill(main_col);
     else fill(0);//noFill();
     
@@ -52,7 +52,7 @@ class EquipmentButton{
     else fill(main_col);
     textSize(10);
     textAlign(CENTER, CENTER);
-    textFont(font_small);
+    textFont(font_ArialMT_10);
     text(ID, x, y);
   
   }

@@ -21,8 +21,11 @@ EquipmentButton currentEnabled = null; // reference variable for the current ena
 ArrayList<EquipmentButton> combined_list = new ArrayList<EquipmentButton>();
 
 PImage rig;
-PFont font;
-PFont font_small;
+PFont font_Prime_Regular_48;
+PFont font_ArialMT_10;
+PFont font_ArialMT_15;
+
+final color MAIN_COL =  color(255,105,204);
 
 // Variables for slider sections 
 
@@ -48,7 +51,7 @@ final int [] alpha_address =   {301, 307, 313, 319, 325, 331, 337, 343}; // alph
 void setup(){
   size(1104, 950);
   
-  dbg = new DimmerButtonGrid(); // setup dimmer button grid
+  dbg = new DimmerButtonGrid(35, 55); // setup dimmer button grid
   
   //eba = new EquipmentButton[x_positions.length];
   eba = new EquipmentButton[25];
@@ -85,21 +88,21 @@ void setup(){
   
   
 
-  section_enabled_rgb_spot = new SliderSection(45, 85);
+  section_enabled_rgb_spot = new SliderSection(35, 344+40);
   section_enabled_rgb_spot.addSlider("red");
   section_enabled_rgb_spot.addSlider("green");
   section_enabled_rgb_spot.addSlider("blue");
   
-  section_enabled_flood = new SliderSection(45, 85);
+  section_enabled_flood = new SliderSection(35, 344+40);
   section_enabled_flood.addSlider("warm");
   section_enabled_flood.addSlider("cold");
   
-  section_combined_rgb_spots = new SliderSection(804, 340);
+  section_combined_rgb_spots = new SliderSection(35, 559+40-10);
   section_combined_rgb_spots.addSlider("red");
   section_combined_rgb_spots.addSlider("green");
   section_combined_rgb_spots.addSlider("blue");
   
-  section_combined_floods = new SliderSection(804, 520);
+  section_combined_floods = new SliderSection(35, 589+40+150);
   section_combined_floods.addSlider("warm");
   section_combined_floods.addSlider("cold");
   println("just added cold", section_combined_floods.sliders.get(1).channel.name);
@@ -129,8 +132,9 @@ void setup(){
   
   rig = loadImage("rig.png");
   imageMode(CENTER);
-  font = loadFont("Prime-Regular-48.vlw");
-  font_small = loadFont("ArialMT-10.vlw");
+  font_Prime_Regular_48 = loadFont("Prime-Regular-48.vlw");
+  font_ArialMT_10 = loadFont("ArialMT-10.vlw");
+  font_ArialMT_15 = loadFont("ArialMT-15.vlw");
   //textFont(font);
 }
 
@@ -140,6 +144,9 @@ void draw(){
   //image(rig, width/2, height/2);
   rectMode(CORNER);
   
+  drawFrame(20, 20, 284, 304, "Power blocks");
+  drawFrame(20, 344, 284, 185, "Single light");
+  drawFrame(20, 549, 284, 325, "Grouped lights");
   drawRig(360, 70);
   //drawRigModule(360, 491);
   
@@ -355,7 +362,7 @@ void drawRig(int x, int y){
   int w = 7;
   int l = 383;
   
-  textFont(font);
+  textFont(font_Prime_Regular_48);
   textSize(52);
   textAlign(CENTER, BOTTOM);
   text("Atrium", x+l/2-w/2, y-2);
@@ -382,4 +389,18 @@ void drawRig(int x, int y){
   textAlign(CENTER, TOP);
   text("Window", x+l/2-w/2, y+l+10);
   
+}
+
+
+void drawFrame(int x, int y, int w, int h, String label){
+  rectMode(CORNER);
+  stroke(MAIN_COL);
+  strokeWeight(2);
+  fill(0);  
+  rect(x, y, w, h);
+  fill(MAIN_COL);
+  textFont(font_ArialMT_15);
+  textSize(12);
+  textAlign(LEFT, TOP);
+  text(label, x+15, y+13);
 }

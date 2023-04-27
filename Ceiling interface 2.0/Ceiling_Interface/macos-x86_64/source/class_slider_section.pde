@@ -35,7 +35,7 @@ class SliderSection{
   
   void disconnectButton(){
     for (Slider s : sliders){
-      s.channel = null;
+      s.channel = null;  
     }
   }
   

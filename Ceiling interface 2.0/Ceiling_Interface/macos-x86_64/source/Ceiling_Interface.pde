@@ -34,11 +34,6 @@ EquipmentButton all_exhibition_rgb;
 EquipmentButton all_floor_rgb;
 EquipmentButton all_floor_flood;
 
-// turn off all equipment
-EquipmentButton kill_all;
-long kill_all_pressed_time = 0;
-//boolean kill_all_pressed = false;
-
 // return states for EB update function
 final int ENABLED_STATE = 0; 
 final int COMBINE_STATE = 1;
@@ -56,7 +51,7 @@ void setup(){
   font_ArialMT_10 = loadFont("ArialMT-10.vlw");
   font_ArialMT_15 = loadFont("ArialMT-15.vlw");
   
-  dbg = new DimmerButtonGrid(870, 105); // setup dimmer button grid
+  dbg = new DimmerButtonGrid(830+40, 105); // setup dimmer button grid
   
   eba = new EquipmentButton[25];
   
@@ -102,13 +97,6 @@ void setup(){
   all_floor_flood.setType("flood");
   all_floor_flood.setSize(150, 40);
   all_floor_flood.setFont(font_ArialMT_15);
-  
-  
-  
-  kill_all = new EquipmentButton(930, 563, "kill all");
-  kill_all.setType("flood");
-  kill_all.setSize(150, 40);
-  kill_all.setFont(font_ArialMT_15);
 
   section_enabled_rgb_spot = new SliderSection(55, 110);
   section_enabled_rgb_spot.addSlider("red");
@@ -198,12 +186,8 @@ void draw(){
   all_exhibition_rgb.show();
   all_floor_rgb.show();
   all_floor_flood.show();
-  // show kill all button
-  kill_all.show();
   
-  //if (usb_error) USBError();
-  
-  if (kill_all.enabled_state && millis() > kill_all_pressed_time + 150) kill_all.enabled_state = false;
+  if (usb_error) USBError();
 }
 
 void mouseReleased(){
@@ -269,15 +253,6 @@ void buttonManager(int mouse_x, int mouse_y, int mouse_button){
   setCombinedGroupe( (EquipmentButton[]) subset(eba, 8, 8), all_floor_rgb);
   setCombinedGroupe( (EquipmentButton[]) subset(eba, 16, 9), all_exhibition_rgb);
   
-
-  
-  int result = kill_all.update(mouseX, mouseY, LEFT);
-  if (result == 0){
-    if (kill_all.enabled_state) {
-      killAll();
-    }
-  }
-  //if (kill_all_pressed_time >)
 }
 
 void addCombined(EquipmentButton add_item){
@@ -522,58 +497,4 @@ void USBError(){
   textAlign (CENTER, CENTER);
   text("DMX USB interface not connected", width/2, height/2);
   noLoop();
-}
-
-void killAll(){
-  
-  // ToDo
-  // disconnect buttons from sliders, so sliders disapear again
-  // make it send DMX
-  
-  for (EquipmentButton eb : eba){
-    for (Channel ch : eb.channels){
-      //if (ch.name.equals("master") eb.updateChannel(ch.name,255);
-      eb.updateChannel(ch.name,0);
-      eb.combine_state = false;
-      eb.enabled_state = false;
-      //sendDMX(ch.address, ch.value);
-    }
-  }
-  
-  for (EquipmentButton eb : dbg.dba){
-    for (Channel ch : eb.channels){
-      //if (ch.name.equals("master") eb.updateChannel(ch.name,255);
-      eb.updateChannel(ch.name,0);
-      eb.combine_state = false;
-      eb.enabled_state = false;
-      //sendDMX(ch.address, ch.value);
-    }
-  }
-  
-  // reset all sliders
-  for (Slider ss : section_combined_rgb_spots.sliders){
-    if(ss.channel.name.equals("master")) ss.setValue(255);
-    else ss.setValue(0);
-  }
-   
-  for (Slider ss : section_combined_floods.sliders){
-    if(ss.channel.name.equals("master")) ss.setValue(255);
-    else ss.setValue(0);
-  }
-  
-  for (Slider ss : section_enabled_rgb_spot.sliders){
-    ss.setValue(0);
-  }
-  
-  section_enabled_rgb_spot.disconnectButton();
-  section_enabled_flood.disconnectButton();
-  
-  // disconnect combined and empty combined list
-  
-  currentEnabled = null; // button state disabled
-  
-  
-  
-  //kill_all_pressed = true;
-  kill_all_pressed_time = millis();
 }

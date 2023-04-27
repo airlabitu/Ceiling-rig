@@ -41,4 +41,13 @@ class SliderSection{
       s.channel = null;  
     }
   }
+  
+  
+  Channel getChannel(String ch_name){
+    for (int i = 0; i < sliders.size(); i++){
+      if (sliders.get(i).channel.name.equals(ch_name)) return sliders.get(i).channel;
+    }
+    return null;
+  }
+  
 }

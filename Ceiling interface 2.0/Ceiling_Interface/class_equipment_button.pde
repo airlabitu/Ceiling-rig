@@ -1,20 +1,24 @@
 class EquipmentButton{
   int type = 0; // type 0=rgb spot , type 1=flood
   int x, y;
-  int size;
+  //int size;
+  int w, h, d;
   color main_col, second_col;
   boolean enabled_state;
   boolean combine_state;
   String ID;
   ArrayList <Channel> channels = new ArrayList<Channel>();
+  PFont font;
   
   EquipmentButton(int x_, int y_, String ID_){
     x = x_;
     y = y_;
-    size = 40;
+    setSize(40, 40);
+    setSize(40);
     main_col = color(255,105,204);
     second_col = color(255, 255, 0);
     ID = ID_;
+    font = loadFont("ArialMT-10.vlw");
   }
   
   int update(int xPos, int yPos, int mouse_button){
@@ -41,25 +45,25 @@ class EquipmentButton{
       
     if (type == 1) {  
       rectMode(CENTER);
-      rect(x, y, size, size); 
+      rect(x, y, w, h); 
     }
     else if (type == 0){  
-      ellipse(x, y, size, size);
+      ellipse(x, y, d, d);
     }
     
     
     if (enabled_state) fill(0);
     else fill(main_col);
-    textSize(10);
+    //textSize(10);
     textAlign(CENTER, CENTER);
-    textFont(font_ArialMT_10);
+    textFont(font);
     text(ID, x, y);
   
   }
   
   boolean isOver(int xPos, int yPos){
-    if (type == 1 && xPos > x-size/2 && xPos < x-size/2+size && yPos > y-size/2 && yPos < y-size/2+size) return true; // square
-    else if (type == 0 && dist(xPos, yPos, x, y) < size/2) return true; // circle
+    if (type == 1 && xPos > x-w/2 && xPos < x-w/2+w && yPos > y-h/2 && yPos < y-h/2+h) return true; // square
+    else if (type == 0 && dist(xPos, yPos, x, y) < d/2) return true; // circle
     else return false;
   }
   
@@ -83,5 +87,19 @@ class EquipmentButton{
   void updateChannel(String ch_name, int val){
     println(ch_name, val, "type:", type);
     getChannel(ch_name).value = val;
+  }
+  
+  void setSize(int w_, int h_){
+    w = w_;
+    h = h_;
+  }
+  
+  void setSize(int d_){
+    d = d_;
+    
+  }
+  
+  void setFont(PFont font_){
+    font = font_;
   }
 }

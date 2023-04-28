@@ -42,7 +42,9 @@ class DimmerButtonGrid {
     
     for (int i = 0; i < dba.length; i++){
       if (dba[i].update(xPos, yPos, LEFT) == 0){ // a change was made
-        sendDMX(dba[i].getChannel("dimm").address, 255*int(dba[i].enabled_state));
+        dba[i].getChannel("dimm").value = 255*int(dba[i].enabled_state);
+        //sendDMX(dba[i].getChannel("dimm").address, 255*int(dba[i].enabled_state));
+        sendDMX(dba[i].getChannel("dimm").address, dba[i].getChannel("dimm").value);
       }
     }
   }

@@ -9,9 +9,9 @@ class SliderSection{
     sliders = new ArrayList<Slider>();
   }
   
-  Channel update(){
+  Channel update(int x_origin, int x_, int y_){
     for (Slider sl : sliders){
-      if (sl.update()) return sl.channel;
+      if (sl.update(x_origin, x_, y_)) return sl.channel;
     }
     return null;
   }

@@ -21,13 +21,13 @@ class Slider{
     channel = new Channel (label_, 999);
   }
   
-  boolean update(){
+  boolean update(int x_origin, int x_, int y_){
     
-    if (mouseX >= x && mouseX <= x+w && mouseY > y && mouseY < y + h){ 
-      channel.value = int(map (mouseX, x, x + w, min, max));
-        if (channel.value != last_val) {
-          last_val = channel.value;
-          return true;
+    if (x_origin >= x && x_origin <= x+w && y_ > y && y_ < y + h){
+      setValue(int(map (x_, x, x + w, min, max)));
+      if (channel.value != last_val) {
+        last_val = channel.value;
+        return true;
       }
     }
     return false;
@@ -35,7 +35,7 @@ class Slider{
   
   boolean setValue(int val_){
     int old_val = channel.value;
-    channel.value = val_;
+    channel.value = constrain(val_, min, max);
     if (old_val == channel.value) return false;
     return true;
   }

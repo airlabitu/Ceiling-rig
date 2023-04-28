@@ -19,6 +19,11 @@ final color MAIN_COL =  color(255,105,204);
 
 boolean usb_error = false;
 
+// mouse interaction variables
+int mouse_drag_y_origin;
+int mouse_drag_x_origin;
+
+
 // Variables for slider sections 
 
 // current selected button (equipment)
@@ -46,6 +51,8 @@ final int TYPE_RGB_SPOT = 0;
 final int TYPE_FLOOD = 1;
 
 final int [] alpha_address =   {301, 307, 313, 319, 325, 331, 337, 343}; // alpha channels that needs to be turned up from beginning
+
+
 
 void setup(){
   size(1179, 940);
@@ -190,7 +197,7 @@ void draw(){
   // show the combined slider sections if any buttons are selected for combine
   if (countCombined(TYPE_FLOOD) > 0) {
     section_combined_floods.show();
-    println(combined_list.size(), combined_list.get(0).ID);
+    //println(combined_list.size(), combined_list.get(0).ID);
   }
   if (countCombined(TYPE_RGB_SPOT) > 0) section_combined_rgb_spots.show();
   
@@ -201,25 +208,31 @@ void draw(){
   // show kill all button
   kill_all.show();
   
-  //if (usb_error) USBError();
+  if (usb_error) USBError();
   
   if (kill_all.enabled_state && millis() > kill_all_pressed_time + 150) kill_all.enabled_state = false;
 }
 
 void mouseReleased(){
   buttonManager(mouseX, mouseY, mouseButton);
-  updateEnabledGUI();
-  updateCombinedGUI();
+  updateEnabledGUI(mouse_drag_x_origin, mouseX, mouseY);
+  updateCombinedGUI(mouse_drag_x_origin, mouseX, mouseY);
   dbg.update(mouseX, mouseY);
 }
 
+
 void mouseDragged(){
-  updateEnabledGUI();
-  updateCombinedGUI();
+  updateEnabledGUI(mouse_drag_x_origin, mouseX, mouse_drag_y_origin);
+  updateCombinedGUI(mouse_drag_x_origin, mouseX,mouse_drag_y_origin);
 }
 
 void keyReleased(){
   sendDMX(313, 255);
+}
+
+void mousePressed(){
+  mouse_drag_y_origin = mouseY;
+  mouse_drag_x_origin = mouseX;
 }
 
 void buttonManager(int mouse_x, int mouse_y, int mouse_button){
@@ -316,12 +329,12 @@ void removeCombined(EquipmentButton remove_item){
   }
 }
 
-void updateEnabledGUI(){
+void updateEnabledGUI(int x_origin_, int x_, int y_){
   
   if (currentEnabled != null){
     Channel ch = null;
-    if (currentEnabled.type == TYPE_RGB_SPOT) ch = section_enabled_rgb_spot.update();
-    else if (currentEnabled.type == TYPE_FLOOD) ch = section_enabled_flood.update();
+    if (currentEnabled.type == TYPE_RGB_SPOT) ch = section_enabled_rgb_spot.update(x_origin_, x_, y_);
+    else if (currentEnabled.type == TYPE_FLOOD) ch = section_enabled_flood.update(x_origin_, x_, y_);
     
     if (ch != null) {
       println("UPDATED enable:", ch.name, ch.address, ch.value); // NB: ch will ne 'null' if no sliders where moved - send DMX data out here
@@ -330,13 +343,13 @@ void updateEnabledGUI(){
   }
 }
 
-void updateCombinedGUI(){
+void updateCombinedGUI(int x_origin_, int x_, int y_){
   
   // NB: the reason for having two quite similar sections here is that it is sddressing two different slider sections
   
   if (countCombined(TYPE_RGB_SPOT) > 0){
     Channel combine_ch = null;
-    combine_ch = section_combined_rgb_spots.update();
+    combine_ch = section_combined_rgb_spots.update(x_origin_, x_, y_);
     if (combine_ch != null) { // a rgb spot combined slider was moved
       float factor = map(section_combined_rgb_spots.getChannel("master").value, 0, 255, 0, 1);
       println("master factor", factor);
@@ -369,7 +382,7 @@ void updateCombinedGUI(){
   }
   if (countCombined(TYPE_FLOOD) > 0){
     Channel combine_ch = null;
-    combine_ch = section_combined_floods.update();
+    combine_ch = section_combined_floods.update(x_origin_, x_, y_);
     if (combine_ch != null) { // a rgb spot combined slider was moved
       
       float factor = map(section_combined_floods.getChannel("master").value, 0, 255, 0, 1);
@@ -533,6 +546,7 @@ void killAll(){
   for (EquipmentButton eb : eba){
     for (Channel ch : eb.channels){
       //if (ch.name.equals("master") eb.updateChannel(ch.name,255);
+      if (ch.value != 0) sendDMX(ch.address, 0);
       eb.updateChannel(ch.name,0);
       eb.combine_state = false;
       eb.enabled_state = false;
@@ -543,37 +557,44 @@ void killAll(){
   for (EquipmentButton eb : dbg.dba){
     for (Channel ch : eb.channels){
       //if (ch.name.equals("master") eb.updateChannel(ch.name,255);
+      println("CH value", ch.value);
+      if (ch.value != 0) sendDMX(ch.address, 0);
       eb.updateChannel(ch.name,0);
       eb.combine_state = false;
       eb.enabled_state = false;
-      //sendDMX(ch.address, ch.value);
+      //sendDMX(ch.address, 0);
     }
   }
   
   // reset all sliders
   for (Slider ss : section_combined_rgb_spots.sliders){
-    if(ss.channel.name.equals("master")) ss.setValue(255);
-    else ss.setValue(0);
+    if (ss.channel != null){
+      if(ss.channel.name.equals("master")) ss.setValue(255);
+      else ss.setValue(0);
+    }
   }
    
   for (Slider ss : section_combined_floods.sliders){
-    if(ss.channel.name.equals("master")) ss.setValue(255);
-    else ss.setValue(0);
+    if (ss.channel != null){
+      if(ss.channel.name.equals("master")) ss.setValue(255);
+      else ss.setValue(0);
+    }
   }
   
   for (Slider ss : section_enabled_rgb_spot.sliders){
-    ss.setValue(0);
+    if (ss.channel != null) ss.setValue(0);
   }
   
   section_enabled_rgb_spot.disconnectButton();
   section_enabled_flood.disconnectButton();
   
-  // disconnect combined and empty combined list
+  all_exhibition_rgb.enabled_state = false;
+  all_floor_rgb.enabled_state = false;
+  all_floor_flood.enabled_state = false;
+  
+  combined_list.clear(); 
   
   currentEnabled = null; // button state disabled
   
-  
-  
-  //kill_all_pressed = true;
   kill_all_pressed_time = millis();
 }

@@ -42,7 +42,7 @@ rig is controlled via DMX from a work station in the lab - if not otherwise spec
 
 ## Construction Documentation
 
-The rig is conctrolled via an Arduino Uno with a DMX shield running the SerialToDMX example from the DMXsimple library. DMX cables are run from this to the ceiling rig. The arduino is coupled with the work station via a USB connection - use the yellow USB cable marked 'ceiling rig DMX controller'. 
+The rig is controlled via an Arduino Uno with a DMX shield running the SerialToDMX example from the DMXsimple library. DMX cables are run from this to the ceiling rig. The arduino is coupled with the work station via a USB connection - use the yellow USB cable marked 'ceiling rig DMX controller'. 
 
 Make sure that the baudrate of the Arduino matches the processing sketch (115200).
 

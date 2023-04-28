@@ -58,6 +58,6 @@ If you need to export a new application there are a few things you need to consi
 
 If you need to change the icon you need to do the following.
 1. Create a new PNG icon, name it "icon.png", and replace the existing one in the Processing sketch data folder.
-2. Use this website (https://cloudconvert.com/png-to-icns) to create a .icns file from the new "icon.png" file, and rename the .icns file to "application.icns"
-3. Add the new .icns file to the data foolder, and replace it in the exported application as described above under (Change the desktop icon).
+2. Use this website (https://cloudconvert.com/png-to-icns) to create a .icns file from the new icon, and name it "application.icns"
+3. Add the new .icns file to the data foolder, and replace it in the exported application as described above.
   

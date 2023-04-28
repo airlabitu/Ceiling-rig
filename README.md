@@ -1,6 +1,6 @@
 # Ceiling-rig
 
-This is the documentation for the AIR LAB ceiling rig.
+This is the documentation for the AIR LAB ceiling rig. (current version is 2.0)
 
 ### Contents:
 
@@ -28,7 +28,7 @@ rig is controlled via DMX from a work station in the lab - if not otherwise spec
 
 1 Kinect Camera - facing the floor [USB connection, DMX power control]
 
-7 Dimmer blocks available
+8 Dimmer blocks
 
 
 ### Rig (Towards the street)
@@ -37,11 +37,27 @@ rig is controlled via DMX from a work station in the lab - if not otherwise spec
 
 11 RGB lights
 
-7 Dimmer blocks available
+8 Dimmer blocks
 
 
 ## Construction Documentation
 
-The rig is conctrolled via an Arduino Uno with a DMX shield running the SerialToUsb example from the DMXsimple library. DMX cables are run from this to the ceiling rig. The arduino is coupled with the work station via a USB connection - use the yellow USB cable marked 'ceiling rig DMX controller'. 
+The rig is conctrolled via an Arduino Uno with a DMX shield running the SerialToDMX example from the DMXsimple library. DMX cables are run from this to the ceiling rig. The arduino is coupled with the work station via a USB connection - use the yellow USB cable marked 'ceiling rig DMX controller'. 
 
-The name of the arduino board is hardcoded into the interface under 'CONNECTION TO SERIAL DEVICES', and must be updated if the Arduino is changed (look in the serial monitor for the available serial connections). Furthermore, make sure that the baudrate of the Arduino matches the processing sketch.
+Make sure that the baudrate of the Arduino matches the processing sketch (115200).
+
+## Exporting a new application
+If you need to export a new application there are a few things you need to consider.
+
+1. Don't export it inside the local copy of this gitHub folder, since it is taking up a lot os space, and not wanted as part of this repo next time it is synced.
+2. Change the desktop icon
+- Locate the icon file called "application.icns" inside the Processing sketch data folder, and copy it to the clipboard.
+- Delete the "source" folder inside the export folder, leaving only the application itself.
+- Right click the application "Ceiling_Interface" and choose "Show package contents", to see the files behind.
+- Go to "Contents->Resources" and paste the icon file. (choose replace when asked to replace or keep existing icon file)
+
+If you need to change the icon you need to do the following.
+1. Create a new PNG icon, name it "icon.png", and replace the existing one in the Processing sketch data folder.
+2. Use this website (https://cloudconvert.com/png-to-icns) to create a .icns file from the new "icon.png" file, and rename the .icns file to "application.icns"
+3. Add the new .icns file to the data foolder, and replace it in the exported application as described above under (Change the desktop icon).
+  

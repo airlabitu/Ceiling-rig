@@ -530,7 +530,7 @@ boolean hasCombined(String ID){
 
 void USBError(){
   background(0);
-  fill(255,0,0);
+  fill(MAIN_COL);
   textFont(font_Prime_Regular_48);
   textAlign (CENTER, CENTER);
   text("DMX USB interface not connected", width/2, height/2);

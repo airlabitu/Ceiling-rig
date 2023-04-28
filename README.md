@@ -50,8 +50,8 @@ Make sure that the baudrate of the Arduino matches the processing sketch (115200
 If you need to export a new application there are a few things you need to consider.
 
 1. Don't export it inside the local copy of this gitHub folder, since it is taking up a lot os space, and not wanted as part of this repo next time it is synced.
-2. Change the desktop icon
-	a. Locate the icon file called "application.icns" inside the Processing sketch data folder, and copy it to the clipboard.
+2. Change the desktop icon<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a. Locate the icon file called "application.icns" inside the Processing sketch data folder, and copy it to the clipboard.
 - Delete the "source" folder inside the export folder, leaving only the application itself.
 - Right click the application "Ceiling_Interface" and choose "Show package contents", to see the files behind.
 - Go to "Contents->Resources" and paste the icon file. (choose replace when asked to replace or keep existing icon file)
